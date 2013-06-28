@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         banner: '/*! laser.js v<%= pkg.version %>, <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'dist/laser.js',
+        src: 'dist/laser-<%= pkg.version %>.js',
         dest: 'dist/laser-<%= pkg.version %>.min.js'
       }
     },
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['src/laser.js'],
-        dest: 'dist/laser.js'
+        dest: 'dist/laser-<%= pkg.version %>.js'
       }
     },
     watch: {
@@ -48,7 +48,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint','concat','uglify','watch']);
+  grunt.registerTask('build', ['jshint','concat','uglify']);
+  grunt.registerTask('default', ['jshint','watch']);
 
 };
 
