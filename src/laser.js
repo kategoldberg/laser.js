@@ -235,7 +235,7 @@
       o.queue = false;
       o.easing = o.easing || 'easeOutExpo';
       if (!_isValidEasing(o.easing)) {
-        throw new Error('Unknown easing method!');
+        throw new Error('Easing method not defined! - '+o.easing);
       }
       o.duration = o.duration || 500;
       // push new animation onto sequence
