@@ -1,0 +1,58 @@
+
+#stage {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 0;
+}
+
+#stage div {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  -webkit-backface-visibility: hidden;
+}
+
+#box-1 {
+  background: #f39f1b;
+  z-index: 6;
+  left: 0;
+}
+
+#box-2 {
+  background: #e3571a;
+  z-index: 5;
+  left: 40px;
+}
+
+#box-3 {
+  background: #64635e;
+  z-index: 4;
+  left: 80px;
+}
+
+#box-4 {
+  background: #9ca3a9;
+  z-index: 3;
+  left: 120px;
+}
+
+#box-5 {
+  background: #c9Cacf;
+  z-index: 2;
+  left: 160px;
+}
+
+#box-6 {
+  background: #eee;
+  z-index: 1;
+  left: 200px;
+}
+
+/* EOF */
