@@ -1,6 +1,6 @@
 {
   "name": "laser.js",
-  "author": "CandidBlend, LLC <hi@candidblend.la>",
+  "author": "Edward Hotchkiss <edward@candidblend.la>",
   "description": "Laser-precision animation sequencing with granular controls on a strong Event based architecture.",
   "version": "0.0.1",
   "repository":{
@@ -8,7 +8,7 @@
     "url": "git://github.com/CandidBlend/laser.js.git"
   },
   "contributors": [
-    { "name": "Edward Hotchkiss","email": "edwardhotchkiss@me.com" },
+    { "name": "Edward Hotchkiss","email": "edward@candidblend.la" },
     { "name": "Lindsey Mysse","email": "lindsey.mysse@gmail.com" }
   ],
   "devDependencies":{

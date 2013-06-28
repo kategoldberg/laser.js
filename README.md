@@ -84,9 +84,5 @@ Speed, sexy - [jQuery Transit](http://ricostacruz.com/jquery.transit/). `jQuery 
 
 ### License (MIT)
 
-Copyright (c) 2013, CandidBlend, LLC
-
-### Author: [CandidBlend, LLC][0]
-
-[0]: http://github.com/CandidBlend/
+Copyright (c) 2013, Edward Hotchkiss
 

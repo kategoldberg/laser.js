@@ -1,7 +1,7 @@
 
 /**
  * @library laser.js
- * @author CandidBlend, LLC <hi@candidblend.la>
+ * @author Edward Hotchkiss <edward@candidblend.la>
  * @description Laser-precision animation sequencing and chaining
  * with granular controls on a strong Event based architecture.
  * @license MIT
