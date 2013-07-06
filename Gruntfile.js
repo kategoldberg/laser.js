@@ -21,10 +21,15 @@ module.exports = function(grunt) {
         browser: true,
         globals: {
           jQuery: true
-        },
+        }
       },
       files: {
-        src: ['src/laser.js']
+        src: [
+          'Gruntfile.js',
+          'src/laser.js',
+          'test/js/vendor/kale.js',
+          'test/js/spec/basic.js'
+        ]
       }
     },
     concat: {
@@ -37,7 +42,12 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['Gruntfile.js','src/**/*.js'],
+        files: [
+          'Gruntfile.js',
+          'src/laser.js',
+          'test/js/vendor/kale.js',
+          'test/js/spec/basic.js'
+        ],
         tasks: ['jshint','concat']
       }
     }

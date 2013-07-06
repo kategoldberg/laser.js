@@ -2,8 +2,7 @@
 /**
  * @library laser.js
  * @author Edward Hotchkiss <edward@candidblend.la>
- * @description Laser-precision animation sequencing and chaining
- * with granular controls on a strong Event based architecture.
+ * @description laser-precision animation sequencing & timing
  * @license MIT
  */
 
@@ -20,7 +19,8 @@
     this.cache = {};
     this.listeners = {};
     this.animations = [];
-    return _.extend(this, params);
+    $.extend(this, params);
+    return this;
   };
 
   /**
@@ -55,7 +55,7 @@
    * @description extend our constructor protoype with public methods
    */
 
-  _.extend(Laser.prototype, {
+  Laser.prototype = {
 
     /**
      * @method get
@@ -168,7 +168,7 @@
     },
 
     /**
-     * @method _createAnimation
+     * @method createAnimation
      * @description creates a new animation object
      * @param {Object} obj params
      * @return {Object} jQuery ready animation obj
@@ -182,10 +182,9 @@
         if (this.remaining === 0) {
           this.finishedAt = new Date().getTime();
           var elapsed = this.finishedAt - this.startedAt;
-          this.trigger('sequence:completed', elapsed);
+          this.trigger('sequence:animated', elapsed);
         }
         this.trigger('animation:completed', obj.id);
-        clearTimeout(obj.timeout);
       }, this);
       // fn call entry point
       obj.fn = _.bind(function() {
@@ -200,20 +199,6 @@
         obj.state = 'ON_STACK';
       }, this);
       return obj;
-    },
-
-    /**
-     * @method addEasing
-     * @description add either a css3 cubic-bezier ease or a jquery easing fn
-     */
-
-    addEasing: function(alias, easing) {
-      if (typeof(easing) === 'string') {
-        $.cssEase[alias] = easing;
-      } else {
-        $.easing[alias] = easing;
-      }
-      return this;
     },
 
     /**
@@ -233,7 +218,7 @@
       delete o.when;
       // defaults
       o.queue = false;
-      o.easing = o.easing || 'easeOutExpo';
+      o.easing = o.easing || 'linear';
       if (!_isValidEasing(o.easing)) {
         throw new Error('Easing method not defined! - '+o.easing);
       }
@@ -252,6 +237,20 @@
     },
 
     /**
+     * @method addEasing
+     * @description add either a css3 cubic-bezier ease or a jquery easing fn
+     */
+
+    addEasing: function(alias, easing) {
+      if (typeof(easing) === 'string') {
+        $.cssEase[alias] = easing;
+      } else {
+        $.easing[alias] = easing;
+      }
+      return this;
+    },
+    
+    /**
      * @method play
      * @description plays animation sequence
      */
@@ -261,10 +260,28 @@
       this.startedAt = new Date().getTime();
       this.remaining = stack.length;
       this.trigger('sequence:started', stack.length);
-      _.map(stack, function(val, index) {
+      _.forEach(stack, function(val, index) {
         stack[index].fn.call(this);
       }, this);
+      this.on('sequence:animated', function() {
+        if (this.padTime) {
+          setTimeout(_.bind(function() {
+            this.trigger('sequence:completed');
+          }, this), this.padTime);
+        } else {
+          this.trigger('sequence:completed');
+        }
+      });
       return this;
+    },
+
+    /**
+     * @method wait
+     * @description pad an animation sequences ending
+     */
+
+    wait: function(ms) {
+      this.padTime = ms;
     },
 
     /**
@@ -275,18 +292,29 @@
 
     stop: function(when) {
       var timeout = setTimeout(_.bind(function() {
-        clearTimeout(timeout);
         _.map(this.get('animations', { state : 'ON_STACK' }), function(item) {
           clearTimeout(item.timeout);
           item.$elem.stop(true, false);
           item.state = 'STOPPED';
           this.trigger('animation:stopped', item.id);
         }, this);
-      }, this), when || 0);
+      }, this), when);
       return this;
+    },
+
+    /**
+     * @method getRunTime
+     * @description determine the total run time of a sequence up until invocation point
+     * @return {Number} run time in milliseconds
+     */
+
+    getRunTime: function() {
+        var last, animations = this.get('animations');
+        last = animations[animations.length - 1];
+        return last.when + last.options.duration;
     }
 
-  });
+  };
   
 }());
 

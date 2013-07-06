@@ -1,13 +1,20 @@
 
 # laser.js
 
-> Laser-precision animation sequencing with granular controls on a strong Event based architecture.
+> laser-precision animation sequencing & timing
 
 ### Why?
 
 **More Control:**
 
 jQuery uses an animation queue by default. This is great if you're animating one or two items. If you have a very precise set of animations that you would like to create, modify, and call at an exact time in a sequence; this solves those problems.
+
+### Tested Compatability:
+
+  * IE8+
+  * Chrome 27+
+  * Safari 6+
+  * Firefox 21+
 
 ### Usage ala [candidblend.github.io/laser.js](http://candidblend.github.io/laser.js)
 
@@ -41,14 +48,14 @@ $(function() {
     console.log('> sequence completed in: %s milliseconds', elapsed);
   });
 
-  // add to sequence, easing defaults to 'easeOutExpo'
+  // add to sequence, 'easing' defaults to 'easeOutExpo', 'when' to 0
   seq
-    .add('#box-1', { top : 50,  left : 80 }, { duration : 1000, when : 0 })
-    .add('#box-2', { top : 100, left : 80 }, { duration : 1000, when : 0 })
-    .add('#box-3', { top : 150, left : 80 }, { duration : 1000, when : 0 })
-    .add('#box-4', { top : 200, left : 80 }, { duration : 1000, when : 0 })
-    .add('#box-5', { top : 250, left : 80 }, { duration : 1000, when : 0 })
-    .add('#box-6', { top : 300, left : 80 }, { duration : 1000, when : 0 })
+    .add('#box-1', { top : 50,  left : 80 }, { duration : 1000 })
+    .add('#box-2', { top : 100, left : 80 }, { duration : 1000 })
+    .add('#box-3', { top : 150, left : 80 }, { duration : 1000 })
+    .add('#box-4', { top : 200, left : 80 }, { duration : 1000 })
+    .add('#box-5', { top : 250, left : 80 }, { duration : 1000 })
+    .add('#box-6', { top : 300, left : 80 }, { duration : 1000 })
 
     .add('#box-1', { width : 40,  left : 0   }, { duration : 150,  when : 1250 })
     .add('#box-2', { width : 80,  left : 40  }, { duration : 300,  when : 1250 })
@@ -91,17 +98,17 @@ $(function() {
 
 Since `laser.js` is an extension of jQuery's .animate method, and is quite common in most projects, it's a dependency.
 
-**Underscore.js/Lodash:**
+**Underscore.js:**
 
-Many use it, some don't. TODO: add non-polyfill version.
+`underscore` until we don't need polyfills **:/**
 
 ### Highly Recommended:
 
 **jQuery Transit**
 
-Speed, sexy - [jQuery Transit](http://ricostacruz.com/jquery.transit/). `jQuery Transit` extends jQuery .animate with CSS3 transitions (hardware acceleration = speed) where possible and many other features. Although not required, highly recommended.
+[jQuery Transit](http://ricostacruz.com/jquery.transit/). **jQuery Transit** extends ***jQuery.animate*** with CSS3 transitions (hardware acceleration, speed, more types) where possible. Although not required, highly recommended.
 
 ### License (MIT)
 
-Copyright (c) 2013, Edward Hotchkiss
+> Copyright (c) 2013, Edward Hotchkiss
 

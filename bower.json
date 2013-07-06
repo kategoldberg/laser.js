@@ -1,0 +1,34 @@
+{
+  "name": "laser.js",
+  "version": "0.0.1",
+  "description": "laser-precision animation sequencing & timing",
+  "author": "Edward Hotchkiss <edward@candidblend.la>",
+  "contributors":[
+    { "name": "Edward Hotchkiss","email": "edward@candidblend.la" },
+    { "name": "Lindsey Mysse","email": "lindsey.mysse@gmail.com" }
+  ],
+  "main": "dist/laser.js",
+  "dependencies": {
+    "jquery": "2.0.3",
+    "underscore": "1.4.4",
+  },
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "keywords":[
+    "animation",
+    "transition",
+    "sequence"
+  ],
+  "homepage": "https://github.com/CandidBlend/laser.js",
+  "bugs": "https://github.com/CandidBlend/laser.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CandidBlend/laser.js.git"
+  },
+  "licenses":[{
+    "type":"MIT",
+    "url":"http://github.com/CandidBlend/laser.js/LICENSE"
+  }]
+}

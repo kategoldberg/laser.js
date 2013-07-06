@@ -1,7 +1,7 @@
 {
   "name": "laser.js",
   "author": "Edward Hotchkiss <edward@candidblend.la>",
-  "description": "Laser-precision animation sequencing with granular controls on a strong Event based architecture.",
+  "description": "laser-precision animation sequencing & timing",
   "version": "0.0.1",
   "repository":{
     "type": "git",
