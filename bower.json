@@ -10,7 +10,7 @@
   "main": "dist/laser.js",
   "dependencies": {
     "jquery": "2.0.3",
-    "underscore": "1.4.4",
+    "underscore": "1.4.4"
   },
   "ignore": [
     "node_modules",
